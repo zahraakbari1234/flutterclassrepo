@@ -1,7 +1,7 @@
 class Questions {
 
-   String questionDetail;
-    bool questionAnswer;
+  final String questionDetail;
+  final  bool questionAnswer;
 
   Questions({ required this.questionDetail , required this.questionAnswer});
 }

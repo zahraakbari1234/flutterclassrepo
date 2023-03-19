@@ -35,18 +35,18 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List <Widget> scoreKeeper = [];
-  bool permitCheckAnswer = true ;
-  QuestionHelper helper = QuestionHelper();
+  bool permitCheckAnswer = true ;//not to overflow check and cancel icons
+  QuestionHelper helper = QuestionHelper();//create obj
 
   void checkAnswer(bool userPickedAnswer) {
     bool correctAnswer = helper.getQuestionAnswer();
     setState(() {
       if(permitCheckAnswer == true ){
         if (correctAnswer == userPickedAnswer) {
-          scoreKeeper.add(Icon(Icons.check, color: Colors.green,));
+          scoreKeeper.add(const Icon(Icons.check, color: Colors.green,));
         }
         else {
-          scoreKeeper.add(Icon(Icons.close, color: Colors.red,));
+          scoreKeeper.add(const Icon(Icons.close, color: Colors.red,));
         }
       }
        permitCheckAnswer = helper.nextQuestion();

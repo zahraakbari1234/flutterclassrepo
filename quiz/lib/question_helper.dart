@@ -44,7 +44,7 @@ class QuestionHelper {
 
   ];
 
-  bool nextQuestion(){
+  bool nextQuestion(){ // not to overflow at runtime
     if(_question_number<_questionBank.length -1){
       _question_number++;
       return true;
