@@ -23,7 +23,7 @@ class XylophoneApp extends StatelessWidget {
             child: Container(
               height: 20,
               color: Colors.amber,
-              child: Text("play"),
+              child: Text("play your music"),
             ),
           ),
         ),
