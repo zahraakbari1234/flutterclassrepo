@@ -1,10 +1,9 @@
 import 'dart:async';
-
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:snake_game/blank_pixel.dart';
 import 'package:snake_game/snake_pixel.dart';
 import 'food_pixel.dart';
-import 'package:async/async.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,26 +23,54 @@ class _HomePageState extends State<HomePage> {
   List<int> snakePos = [0 , 1 , 2];
   int foodPos = 55 ;
   var currentDirection = SnakeDirection.right;
+  int currentScore = 0 ;
+
   void startGame (){
     _isFistTimePressed = false ;
-    Timer.periodic(const Duration(milliseconds: 300), (timer) {
+    Timer.periodic(  const Duration(milliseconds: 300), (timer) {
       setState(() {
         moveSnake();
+        if(gameOver()){
+          print('game over');
+          timer.cancel();
+
+          showDialog(context: context, builder: (context){
+            return  AlertDialog(
+              title: const Text('GAME OVER'),
+              content: Text( "your current score is $currentScore") ,
+
+            );
+          });
+        }
       });
     });
   }
+
+  void eatFood(){
+    while(snakePos.contains(foodPos)){
+      currentScore ++;
+      foodPos = Random().nextInt(TotalNumberOFSquares);
+
+    }
+  }
+
+  bool gameOver (){
+    List<int> snakeBody = snakePos.sublist(0 , snakePos.length - 1);
+    if(snakeBody.contains(snakePos.last)){
+      return true;
+    }
+      return false ;
+  }
+
   void moveSnake () {
     switch (currentDirection) {
       case SnakeDirection.right:
         {
           if (snakePos.last % rowSize == 9) {
             snakePos.add(snakePos.last + 1 - rowSize);
-            snakePos.removeAt(0);
           }
           else {
             snakePos.add(snakePos.last + 1);
-            snakePos.removeAt(0);
-
           }
         }
         break;
@@ -51,13 +78,9 @@ class _HomePageState extends State<HomePage> {
         {
           if (snakePos.last % rowSize == 0) {
             snakePos.add(snakePos.last - 1 + rowSize);
-            snakePos.removeAt(0);
-
           }
           else {
             snakePos.add(snakePos.last - 1);
-            snakePos.removeAt(0);
-
           }
         }
         break;
@@ -65,13 +88,9 @@ class _HomePageState extends State<HomePage> {
         {
           if (snakePos.last < rowSize) {
             snakePos.add(snakePos.last - rowSize + TotalNumberOFSquares);
-            snakePos.removeAt(0);
-
           }
           else {
             snakePos.add(snakePos.last - rowSize);
-            snakePos.removeAt(0);
-
           }
         }
         break;
@@ -79,17 +98,19 @@ class _HomePageState extends State<HomePage> {
         {
           if (snakePos.last + rowSize > TotalNumberOFSquares) {
             snakePos.add(snakePos.last + rowSize - TotalNumberOFSquares);
-            snakePos.removeAt(0);
-
           }
           else {
             snakePos.add(snakePos.last + rowSize);
-            snakePos.removeAt(0);
-
           }
         }
         break;
       default:
+    }
+
+    if(snakePos.last == foodPos){
+      eatFood();
+    }else{
+      snakePos.removeAt(0);
     }
   }
 
@@ -98,7 +119,25 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         Expanded(
-          child: Container(
+          child: SafeArea(
+            child: Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      const Text("current score"),
+                      Text(currentScore.toString(),
+                      style: const TextStyle(
+                        fontSize: 36,
+                      ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
           ),
         ),
         Expanded(
