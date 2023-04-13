@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
-import 'input_page.dart';
-
-
-const labelTextStyle  = TextStyle(
-  color: button_color,
-  fontSize: 19,
-  fontWeight: FontWeight.bold,
-);
-
-
-
+import 'constants.dart';
 
 class IconContent extends StatelessWidget {
   final IconData icon;

@@ -2,11 +2,8 @@ import 'package:bmi_cal_start/reuseable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
+import 'constants.dart';
 
-const button_container_height = 80.0 ;
-const active_color = Color(0XFFF7EDDB);
-const button_color = Color(0XFF586c5c);
-const inactive_color =  Color(0XFFa9af90);
 enum Gender {male , female}
 
 
