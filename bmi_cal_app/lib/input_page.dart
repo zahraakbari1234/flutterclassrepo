@@ -19,34 +19,6 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
 
     Gender? selected_gender ;
-  // Color maleCardColor  = inactive_color;
-  // Color femaleCardColor = inactive_color;
-  //
-  // void updateColor (int gender){
-  //   if (gender == 1)//male
-  //     {
-  //       if(maleCardColor == inactive_color){
-  //         maleCardColor = active_color;
-  //         femaleCardColor = inactive_color;
-  //       }
-  //       else{
-  //         maleCardColor = inactive_color;
-  //       }
-  //   }
-  //
-  //   if (gender == 2)//female
-  //     {
-  //     if(femaleCardColor == inactive_color){
-  //       femaleCardColor = active_color;
-  //       maleCardColor = inactive_color;
-  //     }
-  //     else{
-  //       femaleCardColor = inactive_color;
-  //     }
-  //   }
-  //
-  //
-  // }
 
 
   @override
