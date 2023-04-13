@@ -19,8 +19,6 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
 
     Gender? selected_gender ;
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
