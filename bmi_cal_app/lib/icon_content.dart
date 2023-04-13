@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'input_page.dart';
+
+
+const labelTextStyle  = TextStyle(
+  color: button_color,
+  fontSize: 19,
+  fontWeight: FontWeight.bold,
+);
+
+
 
 
 class IconContent extends StatelessWidget {
@@ -20,11 +30,7 @@ class IconContent extends StatelessWidget {
         ),
         Text(
           label,
-          style: const TextStyle(
-            color: button_color,
-            fontSize: 19,
-            fontWeight: FontWeight.bold,
-          ),
+          style: labelTextStyle,
         )
       ],
     );
