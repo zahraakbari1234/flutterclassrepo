@@ -4,9 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'constants.dart';
 
-enum Gender {male , female}
-
-
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -14,8 +12,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender? selected_gender;
+  int height = 180;
+  int weight = 60;
 
-    Gender? selected_gender ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,70 +23,138 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: const Color(0XFF202e32),
         title: const Center(child: Text('BMI CALCULATOR')),
       ),
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+      body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         //گذاشتن این expanded ها باعث responsive شدن UI می شود
         Expanded(
           child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: (){
+                child: ReuseableCard(
+                  onPress: () {
                     setState(() {
                       selected_gender = Gender.female;
                     });
                   },
-                  child:  ReuseableCard(color: selected_gender == Gender.female ? active_color : inactive_color,
+                  color: selected_gender == Gender.female
+                      ? KActive_color
+                      : KInactive_color,
                   cardChild: const IconContent(
                     label: "Female",
                     icon: FontAwesomeIcons.venus,
                   ),
-                  ),
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: (){
+                child: ReuseableCard(
+                  onPress: () {
                     setState(() {
                       selected_gender = Gender.male;
                     });
                   },
-                  child: ReuseableCard(color:selected_gender == Gender.male ? active_color : inactive_color,
-                    cardChild: const IconContent(
-                      label: "Male",
-                      icon: FontAwesomeIcons.mars,
-                    ),
+                  color: selected_gender == Gender.male
+                      ? KActive_color
+                      : KInactive_color,
+                  cardChild: const IconContent(
+                    label: "Male",
+                    icon: FontAwesomeIcons.mars,
                   ),
                 ),
               )
             ],
           ),
         ),
-        const Expanded(
-          child: ReuseableCard(color:inactive_color),
+        Expanded(
+          child: ReuseableCard(
+            color: KInactive_color,
+            cardChild: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Height",
+                  style: KLabel_TextStyle,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline
+                      .alphabetic, //when using baseline ... base should be mentioned
+                  children: [
+                    Text(height.toString(), style: KNumberl_TextStyle),
+                    const Text("cm", style: KLabel_TextStyle),
+                  ],
+                ),
+                SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                      thumbShape:
+                          const RoundSliderThumbShape(enabledThumbRadius: 15),
+                      overlayShape: RoundSliderOverlayShape(overlayRadius: 30)),
+                  child: Slider(
+                      min: 120.0,
+                      max: 220.0,
+                      activeColor: KButton_color,
+                      inactiveColor: KActive_color,
+                      value: height.toDouble(),
+                      onChanged: (double value) {
+                        setState(() {
+                          height = value.round();
+                        });
+                      }),
+                )
+              ],
+            ),
+          ),
         ),
         Expanded(
             child: Row(
-          children: const [
+          children:  [
             Expanded(
-              child: ReuseableCard(color:inactive_color),
+              child: ReuseableCard(color: KInactive_color,
+              cardChild: Column(
+                children: [
+                  const Text("Weight", style: KLabel_TextStyle),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(weight.toString() , style: KNumberl_TextStyle),
+                      const Text("kg",style: KLabel_TextStyle)
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FloatingActionButton(
+                        onPressed: (){},
+                        backgroundColor: const Color(0xffdfdcb9),
+                        child: Icon(Icons.add,
+                        color: KButton_color,
+                        ),
+                      ),
+                      FloatingActionButton(
+                        onPressed: (){},
+                        backgroundColor: const Color(0xffdfdcb9),
+                        child: Icon(Icons.remove,
+                          color: KButton_color,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              ),
             ),
             Expanded(
-              child: ReuseableCard(color:inactive_color),
+              child: ReuseableCard(color: KInactive_color),
             ),
           ],
         )),
-            Container(
-              color: button_color,
-              width: double.infinity,
-              height: button_container_height,
-            )
+        Container(
+          color: KButton_color,
+          width: double.infinity,
+          height: KButton_container_height,
+        )
       ]),
     );
   }
 }
-
-
-
-

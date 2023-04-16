@@ -12,7 +12,7 @@ class IconContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children:  [
         Icon(icon,
-          color: button_color,
+          color: KButton_color,
           size: 90,
         ),
         const SizedBox(
@@ -20,7 +20,7 @@ class IconContent extends StatelessWidget {
         ),
         Text(
           label,
-          style: labelTextStyle,
+          style: KLabel_TextStyle,
         )
       ],
     );
