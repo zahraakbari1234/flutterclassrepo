@@ -13,3 +13,11 @@ const KLabel_TextStyle  = TextStyle(
 );
 
 const KNumberl_TextStyle  = TextStyle(fontSize: 50 , fontWeight: FontWeight.w900);
+
+const KTitle_TextStyle = TextStyle(fontSize: 50 , fontWeight: FontWeight.bold);
+
+const KResult_TextStyle = TextStyle(fontSize: 22 , fontWeight: FontWeight.bold ,
+color: Color(0xff2e9599)
+);
+
+const KBody_TextStyle = TextStyle(fontSize:   22, color: Colors.black);
