@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../components/reuseable_card.dart';
 import '../components/calc_button.dart';
+import 'input_page.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+
+  final String bmiResult;
+  final String resultText;
+  final String detailResult;
+
+  const ResultPage({required this.bmiResult , required this.resultText , required this.detailResult}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -39,21 +45,31 @@ class ResultPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Normal",
+                  resultText.toUpperCase(),
                   style: KResult_TextStyle,
                 ),
                 Text(
-                  "18",
-                  style: KNumberl_TextStyle,
+                  bmiResult,
+                  style: KNumberl_TextStyle.copyWith(color: Color(0XFF202e32)),
                 ),
                 Text(
-                  "خیلی لاغری خوش بحالت",
+                  detailResult,
                   style: KBody_TextStyle,
                 )
               ],
             ),
           )),
-          CalcButton(onTap: () { Navigator.pop(context); },
+          CalcButton(onTap: () {
+            // Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  InputPage(
+                ),
+              ),
+            );
+            },
+
             titleButton: 'ReCalculate',
           ),
         ],

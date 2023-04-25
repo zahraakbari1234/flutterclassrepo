@@ -6,6 +6,11 @@ import '../components/icon_content.dart';
 import '../constants.dart';
 import '../components/round_icon_button.dart';
 import '../components/calc_button.dart';
+import 'package:bmi_cal_start/calculator.dart';
+import 'package:slide_to_act/slide_to_act.dart';
+import 'package:swipeable_button_view/swipeable_button_view.dart';
+import 'package:page_transition/page_transition.dart';
+
 
 enum Gender { male, female }
 
@@ -19,6 +24,7 @@ class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 60;
   int age = 30;
+  bool _isFinished = false;
 
   @override
   Widget build(BuildContext context) {
@@ -182,22 +188,103 @@ class _InputPageState extends State<InputPage> {
           ],
         )),
 
+        //swipeable button
+        /* */
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SwipeableButtonView(
+            isFinished: _isFinished,
+            onFinish: () async {
+              Calculator calc = Calculator(height: height, weight: weight);
+              await Navigator.push(
+                context,
+                PageTransition(
+                    child: ResultPage(
+                          bmiResult: calc.CalculateBmi(),
+                          resultText: calc.GetResult(),
+                          detailResult: calc.GetDetails(),
+                        ),
+                    type: PageTransitionType.fade)
+
+              );
+              setState(() {
+                _isFinished = false;
+              });
+            },
+            onWaitingProcess: () {
+              Future.delayed(Duration(seconds: 1), () {
+                setState(() {
+                  _isFinished = true;
+                });
+              });
+            },
+            activeColor: Color(0xff586c5c),
+            buttonWidget: Icon(
+              Icons.arrow_forward,
+              color: Colors.black,
+            ),
+            buttonText: 'Calculate',
+          ),
+        )
+
+        //slide to action
+        /*
+          Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SlideAction(
+
+            animationDuration: Duration(milliseconds: 300),
+            elevation: 0,
+            borderRadius: 12,
+            innerColor:const Color(0xff586c5c),
+            outerColor: const Color(0xffa9af90),
+            sliderButtonIcon: const Icon(Icons.arrow_forward , color: Colors.white,),
+            text: "CALCULATE",
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 24
+            ),
+            onSubmit: (){
+              Calculator calc = Calculator(height: height, weight: weight);
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) =>  ResultPage(bmiResult: calc.CalculateBmi()
+                , resultText: calc.GetResult(),
+                detailResult: calc.GetDetails(),
+              ),
+                  ),
+              );
+            },
+          ),
+        )
+        */
+
+        //my customized button
+        /*
         CalcButton(
           onTap: () {
+            Calculator calc = Calculator(height: height, weight: weight);
+
+            print(calc.CalculateBmi());
+            print(calc.GetDetails());
+            print(calc.GetResult());
+
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ResultPage(),
+                builder: (context) =>  ResultPage(bmiResult: calc.CalculateBmi()
+                  , resultText: calc.GetResult(),
+                  detailResult: calc.GetDetails(),
+                ),
               ),
             );
           },
           titleButton: 'Calculate',
         ),
+         */
       ]),
     );
   }
 }
-
-
-
-
