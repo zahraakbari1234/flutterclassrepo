@@ -92,6 +92,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "page_transition",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/page_transition-2.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.2",
       "packageUri": "lib/",
@@ -100,6 +106,12 @@
     {
       "name": "sky_engine",
       "rootUri": "file:///C:/flutter/bin/cache/pkg/sky_engine",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "slide_to_act",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/slide_to_act-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -128,6 +140,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "swipeable_button_view",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/swipeable_button_view-0.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/term_glyph-1.2.1",
       "packageUri": "lib/",
@@ -152,7 +170,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2023-04-17T07:39:07.023433Z",
+  "generated": "2023-04-25T10:30:26.377951Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }
