@@ -19,6 +19,10 @@ class LogInPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Icon(
+                Icons.android_outlined,
+                size: 100,
+              ),
               SizedBox(
                 height: 25,
               ),
