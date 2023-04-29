@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                            color: Color.fromRGBO(143, 148, 251, 0.2),
+                            color: Color.fromRGBO(143, 148, 251, 0.3),
                             offset:Offset(0,10),
                             blurRadius: 20
                         ),
