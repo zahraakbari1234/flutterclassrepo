@@ -10,35 +10,34 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = PageController();
-   bool isExpanded = false ;
+
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: (){},
-      //   backgroundColor: Colors.green,
-      //   child: Icon(Icons.monetization_on),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      floatingActionButton: AnimatedContainer(
-      width: isExpanded ? 150 : 56,
-      height: 56,
-      duration: Duration(milliseconds: 300),
-      child:FloatingActionButton.extended(
-          onPressed: () {
-            setState(() {
-              isExpanded = !isExpanded;
-            });
-          },
-          //backgroundColor: Colors.green,
-          icon: isExpanded ? Icon(Icons.ac_unit) : null,
-          label: isExpanded ? Text("Start chat") : Icon(Icons.ac_unit),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        backgroundColor: Colors.green,
+        child: Icon(Icons.monetization_on),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(onPressed: (){}, icon: Icon(Icons.home,
+              size: 32,
+                color: Colors.blue[300],
+            ),),
+            IconButton(onPressed: (){}, icon: Icon(Icons.settings,
+              size: 32,
+              color: Colors.black,
+            ),),
+          ],
         ),
       ),
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           children: [
             Padding(
