@@ -1,0 +1,39 @@
+[33me796ff0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33me796ff0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{1}: reset: moving to HEAD~1
+[33m31d3d6f[m HEAD@{2}: commit: before statefull
+[33me796ff0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{3}: commit: coffee_app cmplt
+[33me4adfb1[m HEAD@{4}: commit: coffe_app cmplt
+[33m24a9301[m HEAD@{5}: commit: end session 13
+[33md1b44cb[m HEAD@{6}: commit: music_player cmplt
+[33m78ac553[m HEAD@{7}: commit: music_player cmplt
+[33m5bc6912[m HEAD@{8}: commit: login page2 full
+[33md8ae449[m HEAD@{9}: commit: login_page2 full
+[33mf57cb72[m HEAD@{10}: commit: add icon android
+[33m0d2806d[m HEAD@{11}: commit: end session 12
+[33ma0f9529[m HEAD@{12}: commit: intro_pages_full
+[33mfcd8f95[m HEAD@{13}: commit: add pack
+[33m9029b94[m HEAD@{14}: commit: animation controller cmplt
+[33m509c84c[m HEAD@{15}: commit: animation_controller_cmplt
+[33m8da7c5e[m HEAD@{16}: commit: bmi_finish
+[33me59aec7[m HEAD@{17}: commit: bmi_finish
+[33ma679fb4[m HEAD@{18}: commit: end_session_11
+[33m4080b3d[m HEAD@{19}: commit: weight_button_part
+[33mded4bdf[m HEAD@{20}: commit: end_session_10
+[33m4b4244e[m HEAD@{21}: commit: test_android_studio_terminal
+[33m1f2464d[m HEAD@{22}: commit: back to prev commit
+[33mecf1800[m HEAD@{23}: commit: test_cmmit
+[33ma596bd0[m HEAD@{24}: commit: back to prev commit
+[33me216bd9[m HEAD@{25}: commit: j10_v3_select_gender
+[33m3588613[m HEAD@{26}: commit: first ui commit
+[33mf5b3fdb[m HEAD@{27}: commit: set theme
+[33m4448acf[m HEAD@{28}: commit: start
+[33mce6a1e2[m HEAD@{29}: commit: complete game
+[33me7b856a[m HEAD@{30}: commit: end session7
+[33m8ddee2c[m HEAD@{31}: commit: delete extra files
+[33m1440a11[m HEAD@{32}: commit: create project
+[33m0f4a46f[m HEAD@{33}: commit: add comment
+[33m264deaf[m HEAD@{34}: commit: complete
+[33m776e0af[m HEAD@{35}: commit: add quiz
+[33m6efd2c1[m HEAD@{36}: commit: complete
+[33m3b01b11[m HEAD@{37}: commit: test commit
+[33me95daa5[m HEAD@{38}: clone: from https://github.com/zahraakbari1234/flutterclassrepo.git
