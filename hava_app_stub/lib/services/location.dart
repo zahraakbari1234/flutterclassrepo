@@ -1,25 +1,23 @@
-
-
-import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'dart:convert';
-import 'package:http/http.dart'as http;
+
 class Location {
 
   double? longitude = 0.0;
   double latitude = 0.0;
-  late Position _postion;
+  late Position _position;
 
 
    Future<void> getCurrentLocation() async{
-    Position postion = await _determinPostion();
-    _postion = postion;
-    if(_postion!=null){
-      latitude = _postion.latitude;
-      longitude = _postion.longitude;
+    Position position = await _determinPostion();
+    _position = position;
+    if(_position!=null){
+      latitude = _position.latitude;
+      longitude = _position.longitude;
     }
-      print(postion);
+      // print(position);
   }
+
+
   Future<Position> _determinPostion() async{
     LocationPermission permission;
     permission = await Geolocator.checkPermission();
