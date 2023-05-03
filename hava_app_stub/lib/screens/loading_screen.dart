@@ -60,8 +60,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
 
 
-
-
   Future<Position> _determinPosition() async {
     LocationPermission permission ;
     permission = await Geolocator.checkPermission();
