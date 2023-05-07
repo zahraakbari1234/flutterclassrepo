@@ -27,7 +27,7 @@ class _CityScreenState extends State<CityScreen> {
                 alignment: Alignment.topLeft,
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.pop(context , City_name);
+                    Navigator.pop(context , City_name); //pass cityName to locationScreen
                   },
                   child: const Icon(
                     Icons.arrow_back_ios,
@@ -40,13 +40,15 @@ class _CityScreenState extends State<CityScreen> {
                 child: TextField(
                   style: const TextStyle(color: Colors.black),
                   decoration: KTextFieldInputDecordation,
-                  onChanged: (value){
+                  onChanged: (value){ // to view typed text by user
                     City_name = value;
                   },
                 ),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context , City_name); //pass cityName to locationScreen
+                },
                 child: const Text(
                   'Get Weather',
                   style: kButtonTextStyle,

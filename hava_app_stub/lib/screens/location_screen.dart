@@ -87,7 +87,8 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                   MaterialButton(
                     onPressed: () async {
-                  var TypedName = await Navigator.push(
+                      //wait until get the var passed by city-screen in Navigator.pop(context , City_name);
+                  var typedName = await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) {
@@ -95,11 +96,11 @@ class _LocationScreenState extends State<LocationScreen> {
                           },
                         ),
                       );
-                          if(TypedName !=null){
-                            var weatherData = await weather.GetCityweather(TypedName);
-                            print(weatherData);
+                          if(typedName !=null){
+                            var weatherData = await weather.GetCityweather(typedName);
+                            // print(weatherData);
                             updateUi(weatherData);
-                            // var waetherData = await weather.
+                            // var weatherData = await weather.
                           }
                     },
                     child: const Icon(
