@@ -4,6 +4,15 @@ import 'package:hava_app_stub/services/weather.dart';
 import 'package:hava_app_stub/utilities/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
+
+
+
+
+
+
+
+
 class LocationScreen extends StatefulWidget {
   LocationScreen({required this.locationWeather});
   final dynamic locationWeather;
@@ -21,6 +30,7 @@ class _LocationScreenState extends State<LocationScreen> {
   String weatherIcon = "";
   String weatherMessage = "";
   String ImageUrl = "";
+
   @override
   void initState() {
     // TODO: implement initState
@@ -32,14 +42,15 @@ class _LocationScreenState extends State<LocationScreen> {
   void updateUi(dynamic weatherData) {
     setState(() {
 
-
     double temp = weatherData['main']['temp'];
     Tempreture = temp.toInt();
     condition = weatherData['weather'][0]['id'];
     CityName = weatherData['name'];
+
     weatherIcon = weather.getWeatherIcon(condition);
     weatherMessage = weather.getMessage(Tempreture);
     ImageUrl = weather.getImageUrl(condition);
+
     });
   }
 
@@ -55,7 +66,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 Colors.white.withOpacity(0.8), BlendMode.dstATop),
           ),
         ),
-        constraints: BoxConstraints.expand(),
+        constraints: const BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,38 +75,38 @@ class _LocationScreenState extends State<LocationScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  // FlatButton(
-                  //   onPressed: () async {
-                  //     var weatherData = await weather.getLocationWeather();
-                  //     updateUi(weatherData);
-                  //   },
-                  //   child: Icon(
-                  //     Icons.near_me,
-                  //     size: 50.0,
-                  //   ),
-                  // ),
-                  // FlatButton(
-                  //   onPressed: () async {
-                  // var TypedName = await Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //         builder: (context) {
-                  //           return CityScreen();
-                  //         },
-                  //       ),
-                  //     );
-                  //         if(TypedName !=null){
-                  //           var weatherData = await weather.GetCityweather(TypedName);
-                  //           print(weatherData);
-                  //           updateUi(weatherData);
-                  //           // var waetherData = await weather.
-                  //         }
-                  //   },
-                  //   child: Icon(
-                  //     Icons.location_city,
-                  //     size: 50.0,
-                  //   ),
-                  // ),
+                  MaterialButton(
+                    onPressed: () async {
+                      var weatherData = await weather.getLocationWeather();
+                      updateUi(weatherData);
+                    },
+                    child: const Icon(
+                      Icons.near_me,
+                      size: 50.0,
+                    ),
+                  ),
+                  MaterialButton(
+                    onPressed: () async {
+                  var TypedName = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CityScreen();
+                          },
+                        ),
+                      );
+                          if(TypedName !=null){
+                            var weatherData = await weather.GetCityweather(TypedName);
+                            print(weatherData);
+                            updateUi(weatherData);
+                            // var waetherData = await weather.
+                          }
+                    },
+                    child: const Icon(
+                      Icons.location_city,
+                      size: 50.0,
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: 120),
@@ -138,7 +149,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 ),
               ),
               Text(
-                ' ',
+                weatherMessage,
                 textAlign: TextAlign.center,
                 style: kMessageTextStyle,
               ),
