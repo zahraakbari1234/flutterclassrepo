@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "770793959252",
+    "project_id": "firetest-bd724",
+    "storage_bucket": "firetest-bd724.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770793959252:android:d62de58e1001883940e2c1",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770793959252-iht3o6kp0b5fjjm2fnhagl0brtl4qu00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRDmoDgPh4CzRifZGw3ldZXwM8P4l1JvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770793959252-iht3o6kp0b5fjjm2fnhagl0brtl4qu00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
