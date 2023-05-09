@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'home_page.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
@@ -22,7 +23,10 @@ class _LogInPageState extends State<LogInPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
 
-    Navigator.of(context).pop();
+    // Navigator.push(context, MaterialPageRoute(builder: (context){
+      return HomePage();
+    // }),);
+   // Navigator.of(context).pop();
   }
 
   @override

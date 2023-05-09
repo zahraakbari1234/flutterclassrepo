@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_start/user_page.dart';
+import 'package:firebase_start/login_page.dart';
 
 /*
 android:
@@ -27,7 +28,7 @@ void main() async{
      */
       name: 'firebase_start',
           options: const FirebaseOptions(
-            apiKey: '...',
+            apiKey: 'AIzaSyDukiPyRuOQoAQIyrMG9sA8IoracyrhZUY',
             appId: '1:176308687989:android:5357979f2a77b4f594d43c',
             messagingSenderId: '176308687989',
             projectId: 'fir-test-ff0d4',
@@ -38,7 +39,7 @@ void main() async{
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(
-      body:UserPage(),
+      body:LogInPage(),
     ),
   ));
 }
