@@ -24,7 +24,7 @@ class GoogleSheetApi{
   static final gsheet = GSheets(_credential);//doc address
   static Worksheet? _worksheet;//instance of our worksheet
 
-  Future initWorkSheet() async{
+  static init() async{
     final spreadSheet = await gsheet.spreadsheet(_id);//spreadsheet address
     _worksheet = spreadSheet.worksheetByTitle("workSheet1");//sheet name
   }
