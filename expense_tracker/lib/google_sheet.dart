@@ -1,7 +1,6 @@
 import 'package:gsheets/gsheets.dart';
 
-class GoogleSheetApi{
-
+class GoogleSheetApi {
   static const _credential = r''' 
 {
   "type": "service_account",
@@ -21,21 +20,68 @@ class GoogleSheetApi{
 
   static const _id = "1Q6WMgharzeTz0i-d3PKDZvSlsj1zkZ7XNTIs-JiCODI";
 
-  static final gsheet = GSheets(_credential);//doc address
-  static Worksheet? _worksheet;//instance of our worksheet
+  static final gsheet = GSheets(_credential); //doc address
+  static Worksheet? _worksheet; //instance of our worksheet
 
   //Vars
-  static int numberOfTransactions = 0 ;
-  static List<List<dynamic>> currentTransaction = [] ;
+  static int numberOfTransactions = 0;
+  static List<List<dynamic>> currentTransaction = [];
   static bool loading = true;
 
-
-
-
-  static init() async{
-    final spreadSheet = await gsheet.spreadsheet(_id);//spreadsheet address
-    _worksheet = spreadSheet.worksheetByTitle("workSheet1");//sheet name
+  static init() async {
+    final spreadSheet = await gsheet.spreadsheet(_id); //spreadsheet address
+    _worksheet = spreadSheet.worksheetByTitle("workSheet1"); //sheet name
+    countRows();
   }
+
+  static Future countRows() async {
+    while ((await _worksheet!.values
+            .value(column: 1, row: numberOfTransactions + 1)) !=
+        '') {
+      numberOfTransactions++;
+    }
+    loadTransactions();
+
+  }
+
+  static loadTransactions() async {
+    if (_worksheet == null) return;
+    for (int i = 1; i < numberOfTransactions; i++) {
+      final String transactionName =
+          await _worksheet!.values.value(column: 1, row: i + 1);
+
+      final String transactionAmount =
+          await _worksheet!.values.value(column: 2, row: i + 1);
+
+      final String expenseOrIncome =
+          await _worksheet!.values.value(column: 3, row: i + 1);
+
+      if (currentTransaction.length < numberOfTransactions) {
+        currentTransaction
+            .add([transactionName, transactionAmount, expenseOrIncome]);
+      }
+    }
+    print(currentTransaction);
+    loading = false;
+  }
+
+
+  static Future insert(String name , String amount , bool isIncome) async{
+
+    if(_worksheet == null) return;
+    numberOfTransactions++;
+    currentTransaction.add([
+      name,
+      amount,
+      isIncome == true ? 'income' : 'expense',
+    ]);
+    await _worksheet!.values.appendRow([
+      name ,
+      amount,
+      isIncome == true ? 'income' : 'expense',
+    ]);
+  }
+
 
 
 }
