@@ -24,6 +24,14 @@ class GoogleSheetApi{
   static final gsheet = GSheets(_credential);//doc address
   static Worksheet? _worksheet;//instance of our worksheet
 
+  //Vars
+  static int numberOfTransactions = 0 ;
+  static List<List<dynamic>> currentTransaction = [] ;
+  static bool loading = true;
+
+
+
+
   static init() async{
     final spreadSheet = await gsheet.spreadsheet(_id);//spreadsheet address
     _worksheet = spreadSheet.worksheetByTitle("workSheet1");//sheet name
