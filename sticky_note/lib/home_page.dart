@@ -14,9 +14,9 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _controller = TextEditingController();
 
 
-  void _post() {
-    setState(() {
-      GoogleSheetApi.insert(_controller.text.trim());
+  Future<void> _post() async {
+    await GoogleSheetApi.insert(_controller.text.trim());
+    setState(()  {
     });
   }
 
@@ -80,26 +80,24 @@ class _HomePageState extends State<HomePage> {
                     border: OutlineInputBorder(),
                     hintText: 'Enter',
                     suffixIcon: IconButton(
-                      icon: Icon(Icons.clear),
+                      icon: const Icon(Icons.clear),
                       onPressed: () {},
                     )),
               ),
             ),
           ),
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('post sth'),
-                  MaterialButton(
-                    onPressed: _post,
-                    color: Colors.green,
-                    child: Text("post"),
-                  ),
-                ],
-              ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('post sth'),
+                MaterialButton(
+                  onPressed: _post,
+                  color: Colors.green,
+                  child: const Text("post"),
+                ),
+              ],
             ),
           )
         ],

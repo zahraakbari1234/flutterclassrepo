@@ -4,17 +4,15 @@ import 'package:sticky_note/mytext_box.dart';
 import 'package:sticky_note/loading_circle.dart';
 
 class NoteGrid extends StatelessWidget {
+  const NoteGrid({super.key});
 
-  // final String text;
-  // final int numberOfNotes;
-  // NoteGrid({required this.text , required this.numberOfNotes});
 
   @override
   Widget build(BuildContext context) {
     return  Expanded(
-        child: GoogleSheetApi.loading == true ? LoadingCircle()  : GridView.builder(
+        child: GoogleSheetApi.loading == true ? const LoadingCircle()  : GridView.builder(
             itemCount: GoogleSheetApi.currentNotes.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
             itemBuilder: (BuildContext context , index){
               return MyTextBox(text: GoogleSheetApi.currentNotes[index]);
             })
