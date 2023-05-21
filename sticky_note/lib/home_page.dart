@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_note/googlesheet_api.dart';
 import 'note_grid.dart';
+import 'dart:async';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,8 +20,39 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void startLoading(){
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      if(GoogleSheetApi.loading == false){
+        setState(() {
+
+        });
+      }
+
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    //listen to the set-state and update according to its state
+    _controller.addListener(() {setState(() {});
+    });
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
+
+    //while loading is running do the startLoading function
+    if(GoogleSheetApi.loading==true){
+      startLoading();
+    }
+
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[300],
@@ -38,10 +70,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: Column(
         children: [
-          NoteGrid(
-            text: _controller.text.trim(),
-            numberOfNotes: 6,
-          ),
+          NoteGrid(),
           Center(
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),

@@ -30,7 +30,8 @@ class GoogleSheetApi {
 
   static init() async {
     final spreadSheet = await stickysheet.spreadsheet(_id); //spreadsheet address
-    _worksheet = spreadSheet.worksheetByTitle("worksheet1"); //sheet name
+    _worksheet = spreadSheet.worksheetByTitle("worksheet1");//sheet name
+    countRows();
     print("success");
 
   }
@@ -43,6 +44,26 @@ class GoogleSheetApi {
     await _worksheet!.values.appendRow([note]);
     print(currentNotes);
 
+  }
+
+  static Future countRows() async{
+    while((await _worksheet!.values.value(column: 1, row: numberOfNotess+1)) != ''){
+      numberOfNotess++;
+    }
+    loadNotes();
+  }
+
+
+
+  static Future loadNotes() async{
+    if(_worksheet == null) return ;
+    for(int i =0 ; i< numberOfNotess ; i++){
+      final String newValue = await _worksheet!.values.value(column: 1, row: i+1) ;
+      if(currentNotes.length < numberOfNotess){
+        currentNotes.add(newValue);
+      }
+    }
+    loading = false;
   }
 
 
