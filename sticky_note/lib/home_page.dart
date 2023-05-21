@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sticky_note/googlesheet_api.dart';
+import 'note_grid.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,50 +10,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   final TextEditingController _controller = TextEditingController();
-  String test_txt = '';
 
-  void _post(){
-    setState((){
-      test_txt = _controller.text.trim();
+
+  void _post() {
+    setState(() {
+      GoogleSheetApi.insert(_controller.text.trim());
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(child: Column(
-        children: [
-          Expanded(child:
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Container(
-              color: Colors.grey[400],
-              child:Center(
-                child: Text(test_txt,style: TextStyle(
-                  color: Colors.red
-                ),),
-              )
+      appBar: AppBar(
+        backgroundColor: Colors.green[300],
+        elevation:0,
+        title: Center(
+          child: Text(
+            "P O S T   N O T E",
+            style: TextStyle(
+              color: Colors.grey[800],
             ),
           ),
+        ),
+      ),
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+          child: Column(
+        children: [
+          NoteGrid(
+            text: _controller.text.trim(),
+            numberOfNotes: 6,
           ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(left: 8.0 , right :8.0 , top:8.0),
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
               child: TextField(
                 controller: _controller,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter',
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
-                    onPressed: () {  },
-                  )
-                ),
-
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter',
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () {},
+                    )),
               ),
             ),
           ),
@@ -62,7 +64,8 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('post sth'),
-                  MaterialButton(onPressed: _post,
+                  MaterialButton(
+                    onPressed: _post,
                     color: Colors.green,
                     child: Text("post"),
                   ),
@@ -70,7 +73,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           )
-
         ],
       )),
     );

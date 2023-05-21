@@ -24,8 +24,8 @@ class GoogleSheetApi {
   static Worksheet? _worksheet; //instance of our worksheet
 
   //Vars
-  static int numberOfTransactions = 0;
-  static List<List<dynamic>> currentTransaction = [];
+  static int numberOfNotess = 0;
+  static List<String> currentNotes = [];
   static bool loading = true;
 
   static init() async {
@@ -34,6 +34,17 @@ class GoogleSheetApi {
     print("success");
 
   }
+
+
+  static Future insert(String note) async{
+    if(_worksheet == null) return ;
+    numberOfNotess++;
+    currentNotes.add(note);
+    await _worksheet!.values.appendRow([note]);
+    print(currentNotes);
+
+  }
+
 
 
 }
