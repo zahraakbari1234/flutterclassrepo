@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     Timer.periodic(Duration(seconds: 1), (timer) {
       if(GoogleSheetApi.loading == false){
         setState((){
-
+          //to refresh the page
         });
         timer.cancel();
       }
@@ -160,7 +160,11 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
-              TopCard(balance: "3478", Expense: '700', Income: '100',),
+              TopCard(
+                balance: (GoogleSheetApi.calculateIncome() - GoogleSheetApi.calculateExpense()).toString(),
+                Expense: GoogleSheetApi.calculateExpense().toString(),
+                Income: GoogleSheetApi.calculateIncome().toString(),
+              ),
               Expanded(
                 child: GoogleSheetApi.loading==true ? LoadingCircle() :  ListView.builder(
                   itemCount: GoogleSheetApi.currentTransaction.length,
@@ -181,7 +185,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () { ShowDial; },
+        onPressed:  ShowDial ,
         child: Icon(Icons.add , color: Colors.white,),
         backgroundColor: Colors.grey[400],
 

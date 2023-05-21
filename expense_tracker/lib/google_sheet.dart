@@ -41,7 +41,6 @@ class GoogleSheetApi {
       numberOfTransactions++;
     }
     loadTransactions();
-
   }
 
   static loadTransactions() async {
@@ -65,10 +64,8 @@ class GoogleSheetApi {
     loading = false;
   }
 
-
-  static Future insert(String name , String amount , bool isIncome) async{
-
-    if(_worksheet == null) return;
+  static Future insert(String name, String amount, bool isIncome) async {
+    if (_worksheet == null) return;
     numberOfTransactions++;
     currentTransaction.add([
       name,
@@ -76,12 +73,32 @@ class GoogleSheetApi {
       isIncome == true ? 'income' : 'expense',
     ]);
     await _worksheet!.values.appendRow([
-      name ,
+      name,
       amount,
       isIncome == true ? 'income' : 'expense',
     ]);
   }
 
+  static double calculateIncome() {
+    double totalIncome = 0;
+    for (int i = 0; i < currentTransaction.length; i++) {
+      if (currentTransaction[i][2] == 'income') {
+        totalIncome += double.parse(currentTransaction[i][1]);
+      }
+    }
+    return totalIncome;
+  }
 
+
+
+  static double calculateExpense() {
+    double totalExpense = 0;
+    for (int i = 0; i < currentTransaction.length; i++) {
+      if (currentTransaction[i][2] == 'expense') {
+        totalExpense += double.parse(currentTransaction[i][1]);
+      }
+    }
+    return totalExpense;
+  }
 
 }

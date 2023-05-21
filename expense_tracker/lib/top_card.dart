@@ -12,6 +12,24 @@ class TopCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         height: 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.grey[200],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade500,
+              offset: const Offset(4.0 ,4.0),
+              blurRadius: 15,
+              spreadRadius: 1
+            ),
+            const BoxShadow(
+                color: Colors.white,
+                offset: Offset(-4.0 ,-4.0),
+                blurRadius: 15,
+                spreadRadius: 1
+            ),
+          ],
+        ),
 
         child: Center(
           child: Column(
@@ -39,13 +57,13 @@ class TopCard extends StatelessWidget {
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle, color: Colors.grey[100]),
-                          child: Center(
-                              child: const Icon(
+                          child: const Center(
+                              child: Icon(
                             Icons.arrow_upward_outlined,
                             color: Colors.green,
                           )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Column(
@@ -69,13 +87,13 @@ class TopCard extends StatelessWidget {
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle, color: Colors.grey[100]),
-                          child: Center(
+                          child: const Center(
                               child: Icon(
                                 Icons.arrow_downward_outlined,
                                 color: Colors.red,
                               ),),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
 
@@ -97,24 +115,6 @@ class TopCard extends StatelessWidget {
               )
             ],
           ),
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[200],
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade500,
-              offset: Offset(4.0 ,4.0),
-              blurRadius: 15,
-              spreadRadius: 1
-            ),
-            BoxShadow(
-                color: Colors.white,
-                offset: Offset(-4.0 ,-4.0),
-                blurRadius: 15,
-                spreadRadius: 1
-            ),
-          ],
         ),
       ),
     );
