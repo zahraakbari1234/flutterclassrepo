@@ -1,0 +1,6 @@
+package com.example.sticky_note
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
