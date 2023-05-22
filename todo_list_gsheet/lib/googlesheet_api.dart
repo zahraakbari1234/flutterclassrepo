@@ -74,5 +74,11 @@ class GoogleSheetApi {
   }
 
 
+  static Future update(int index , int isTaskComplited) async{
+    if(_worksheet == null) return ;
+    await _worksheet!.values.insertValue(isTaskComplited, column: 2, row: index+1);
+
+  }
+
 
 }
