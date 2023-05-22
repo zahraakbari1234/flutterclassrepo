@@ -13,11 +13,7 @@ class TaskScreen extends StatefulWidget {
 
 class _TaskScreenState extends State<TaskScreen> {
 
-  List<Task> tasks = [
-    Task(taskName: "buy milk", isDone: true),
-    Task(taskName: "go gym", isDone: false),
-    Task(taskName: "bake cake", isDone: false),
-  ];
+  List<Task> tasks = [];
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +62,8 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                const Text(
-                  "15 Task",
+                 Text(
+                  "${tasks.length} Task",
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 const SizedBox(height: 15),
