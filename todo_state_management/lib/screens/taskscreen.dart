@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:todo_state_management/widgets/task_list.dart';
 import 'package:todo_state_management/screens/add_task_screen.dart';
+import 'package:todo_state_management/model/task.dart';
 
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
   const TaskScreen({Key? key}) : super(key: key);
+
+  @override
+  State<TaskScreen> createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+
+  List<Task> tasks = [
+    Task(taskName: "buy milk", isDone: true),
+    Task(taskName: "go gym", isDone: false),
+    Task(taskName: "bake cake", isDone: false),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +27,14 @@ class TaskScreen extends StatelessWidget {
           backgroundColor: Colors.green[300],
           child: const Icon(Icons.add),
           onPressed: (){
-            showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
+            showModalBottomSheet(context: context, builder: (context) => AddTaskScreen(
+              callBack: (newTaskTitle){
+                setState(() {
+                  tasks.add(Task(taskName: newTaskTitle, isDone: false));
+                });
+                Navigator.pop(context);
+              },
+            ));
           }
       ),
       body: Column(
@@ -63,7 +83,7 @@ class TaskScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: const TaskList(),
+              child:  TaskList(tasks: tasks),
             ),
           ),
         ],
