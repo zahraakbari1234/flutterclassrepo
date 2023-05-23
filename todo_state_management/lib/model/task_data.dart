@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:todo_state_management/model/task.dart';
-import 'package:provider/provider.dart';
+
 
 class TaskData extends ChangeNotifier{
+
+  //singleton so can have instance just once
 
   List<Task> tasks = [
     Task(taskName: "task1", isDone: false)
@@ -16,4 +18,15 @@ class TaskData extends ChangeNotifier{
     tasks.add(Task(taskName: newTaskTitle, isDone: false));
     notifyListeners();
   }
+
+  void UpdateTask(Task task){
+    task.toggleTask();
+    notifyListeners();
+  }
+
+  void removeTask(Task task){
+    tasks.remove(task);
+    notifyListeners();
+  }
+
 }

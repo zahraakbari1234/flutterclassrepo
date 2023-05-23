@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_state_management/widgets/task_list.dart';
 import 'package:todo_state_management/screens/add_task_screen.dart';
-import 'package:todo_state_management/model/task.dart';
 
 import '../model/task_data.dart';
 
