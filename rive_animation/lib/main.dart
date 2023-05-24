@@ -69,8 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: RiveAnimation.network(
-          'https://cdn.rive.app/animations/vehicles.riv',
+        child: RiveAnimation.asset(
+          'assets/truck.riv',
           animations: const ['idle', 'curves'],
           controllers: [_controller],
         ),
