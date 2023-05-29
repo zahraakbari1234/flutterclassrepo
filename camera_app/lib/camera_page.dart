@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
@@ -58,13 +59,20 @@ class _CameraPageState extends State<CameraPage> {
           onPressed: () async {
             pictureFile = await controller.takePicture();
             setState(() {});
+            if (pictureFile != null)
+              print( pictureFile!.path);
           },
         ),
+
+
+
         // if (pictureFile != null)
-        //   Image.asset(
-        //     pictureFile!.path,
-        //     height: 200,
-        //   )
+          // Image.asset(
+          //   pictureFile!.path,
+          //   height: 200,
+          // )
+
+
       ],
     );
   }
